@@ -1,2 +1,4 @@
 # ZPPropertyKeywordSpecification
 本Demo主要介绍了用来修饰属性的关键字的用法和它们之间的区别。
+
+本Demo主要介绍了指针的概念、引用计数的概念，除此之外，重点介绍了用来修饰属性的关键字atomic、nonatomic、readwrite、readonly、strong、weak、assign、copy等的用法和它们之间的区别，还介绍了什么是深复制和浅赋值以及它们之间的区别和用法。
