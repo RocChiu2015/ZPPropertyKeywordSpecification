@@ -12,4 +12,8 @@
 
 @interface ZPDog : NSObject
 
+@property (nonatomic, assign) int age;
+@property (nonatomic, assign) double money;
+@property (nonatomic, copy) NSString *name;
+
 @end

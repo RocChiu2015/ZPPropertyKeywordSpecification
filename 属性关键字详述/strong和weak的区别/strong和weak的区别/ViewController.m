@@ -154,16 +154,30 @@
 
 - (void)test3
 {
+//    ZPDog *dog = [[ZPDog alloc] init];
+    
+    /**
+     下面代码中不管调用的是"copy"还是"mutableCopy"方法，当程序运行到这句代码的时候都会崩溃，原因是系统找不到ZPDog类的"copyWithZone:"或者"mutableCopyWithZone:"方法；
+     当程序调用对象的"copy"或者"mutableCopy"方法来复制自身时，系统底层会分别调用相应的"copyWithZone:"或者"mutableCopyWithZone:"方法。"copy"方法实际上就是"copyWithZone:"方法的返回值，"mutableCopy"方法实际上就是"mutableCopyWithZone:"方法的返回值；
+     如果想要解决上述的问题就要先让相应的类实现<NSCopying>或者<NSMutableCopying>协议，然后在相应的类里面实现"copyWithZone:"或者"mutableCopyWithZone:"方法，例如ZPCat类。
+     */
+//    ZPDog *dog1 = [dog copy];
+    
     ZPCat *cat = [[ZPCat alloc] init];
     cat.age = 10;
-    cat.money = 100.6;
     
-    //当在下面调用copy方法的时候，系统会自动调用"copyWithZone:"方法，从而生成一个新的副本文件（深拷贝）。
+    //当调用copy方法的时候，系统会自动调用"copyWithZone:"方法，从而生成一个新的副本文件（深拷贝）。
     ZPCat *cat1 = [cat copy];
+    cat1.age = 12;
+    
     ZPCat *cat2 = [cat copy];
+    cat2.age = 13;
+    
     ZPCat *cat3 = [cat copy];
+    cat3.age = 15;
     
     NSLog(@"%p, %p, %p, %p", cat, cat1, cat2, cat3);
+    NSLog(@"%d, %d, %d, %d", cat.age, cat1.age, cat2.age, cat3.age);
 }
 
 - (void)test4
